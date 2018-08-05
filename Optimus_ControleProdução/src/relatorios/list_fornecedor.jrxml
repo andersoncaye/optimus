@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="list_usuarios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bf175dc-d9bb-4c1f-a0f3-df059de379fb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000000">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="72302cc9-d242-47d7-a0e3-d6fc04d25966"/>
+	<queryString>
+		<![CDATA[SELECT * FROM fornecedor WHERE deleted = false ORDER BY razaosocial]]>
+	</queryString>
+	<field name="idfornecedor" class="java.lang.Integer"/>
+	<field name="razaosocial" class="java.lang.String"/>
+	<field name="nomefantasia" class="java.lang.String"/>
+	<field name="cnpj" class="java.lang.String"/>
+	<field name="ie" class="java.lang.String"/>
+	<field name="endereco" class="java.lang.String"/>
+	<field name="cidade" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="ativo" class="java.lang.Boolean"/>
+	<field name="deleted" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="53" uuid="13b5af67-c4f0-40f2-be00-9233d6b06665"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="36"/>
+				</textElement>
+				<text><![CDATA[Lista de Fornecedor]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="32" height="20" uuid="59b21d6f-96d1-4dfa-b20d-c3d8efc02aab"/>
+				<textElement>
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="0" width="200" height="20" uuid="c9c8a938-8a1e-4d30-b66c-d2686c032dcd"/>
+				<textElement>
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Razão Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="0" width="157" height="20" uuid="816964c1-c4c5-4b47-943f-5274ffd6ff8b"/>
+				<textElement>
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Fantasia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="0" width="132" height="20" uuid="ae56ec82-130c-4d0d-94cb-7a4d1ae1efa1"/>
+				<textElement>
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CNPJ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="19" width="555" height="1" uuid="2eca3515-0c77-4e66-877b-6f6d75e89ef1"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="32" height="20" uuid="c21fa09e-08dc-4f8e-99d6-3307db96508a"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idfornecedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="0" width="200" height="20" uuid="f51fbbea-3cd9-4a01-a3a6-31db161b348a"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razaosocial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="254" y="0" width="157" height="20" uuid="b646b808-11d2-414d-9737-b4b17cf79740"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomefantasia}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="423" y="0" width="132" height="20" uuid="1aa32f4f-4214-403f-92ba-62d2563f9b2e"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="78a9e829-f5ee-4fdb-8aba-f7f92b2fe431"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="71817ecb-ef76-4506-baf2-7021c92aa3de"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="105a2eb7-12c4-4334-931f-dd2ead542ff2"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
