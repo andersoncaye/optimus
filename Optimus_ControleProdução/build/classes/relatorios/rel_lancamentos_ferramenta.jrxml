@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_lancamentos_periodo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ffb143f-00c7-4813-aa73-a0a6394250f9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="65"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select fp.*, f.*
+from ficha_producao fp, ferramenta f
+where
+fp.idferramenta = $P{id} AND
+fp.idferramenta = f.idferramenta AND
+fp.ativo = 'true']]>
+	</queryString>
+	<field name="idfichaproducao" class="java.lang.Integer"/>
+	<field name="dataretirada" class="java.sql.Date"/>
+	<field name="datadevolucao" class="java.sql.Date"/>
+	<field name="motivodevolucao" class="java.lang.String"/>
+	<field name="idferramenta" class="java.lang.Integer"/>
+	<field name="idfuncionario" class="java.lang.Integer"/>
+	<field name="ativo" class="java.lang.Boolean"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="idfornecedor" class="java.lang.Integer"/>
+	<field name="deleted" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="41" uuid="281dcef2-0756-46fc-ab89-1edbcec5d02d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Consolas" size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Lançamento - Por Ferramenta]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="28" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="79" uuid="959fc067-655e-4fab-bf0c-80b21f44e71e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NR FICHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="100" height="41" uuid="2f16cfad-c821-468b-a5f9-4ba2cc351252"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA
+RETIRADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="41" width="100" height="38" uuid="151ddd45-81cd-47fa-a42f-03ed5506ee12"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA
+DEVOLUÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="100" height="41" uuid="aa2176e0-d747-47c5-a664-10ab8c830fd4"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="305" height="41" uuid="dce75fd2-8d0d-4da5-99a6-27a53d8af191"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="41" width="405" height="38" uuid="eb148e5f-9f42-4586-84ec-3b196553e39c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOTIVO DEVOLUÇÃO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" uuid="56b8978f-a20a-4c90-9513-4c3bdb4284e2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="3d174875-0c0d-4da8-9466-a61722465419"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idfichaproducao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="100" height="20" uuid="fdcd07ec-bc79-426a-aede-b4defe359948"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataretirada}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="50" y="20" width="100" height="20" uuid="af270048-4e46-4ae0-a1f8-fe64f08ac078"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datadevolucao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="20" uuid="2e1d4acc-5374-4f8f-94c6-32b7d49dec03"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="290" height="20" uuid="6c25cdee-1e36-4a48-93c4-3cd21e0e6d95"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="20" width="405" height="20" uuid="1c748f86-a0c5-455e-8f79-74d2539391dc"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motivodevolucao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="0" width="15" height="20" uuid="3532ec8a-ff8e-467c-b461-8d78c863c5a7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="40" width="555" height="1" uuid="570030fe-f672-4123-bc31-8345b43d8d1d"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="57313af1-917f-4dc8-849d-6abcf5af8411"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="b63dcc36-1ddd-4c07-8cea-c36ad959cf26"/>
+				<textElement textAlignment="Right">
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="2f24b3b7-4f52-401a-bd20-2c56c95d8ca9"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="7" splitType="Stretch"/>
+	</summary>
+</jasperReport>
